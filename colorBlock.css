@@ -1,4 +1,4 @@
-.board {
+.blockBoard, .emptyBoard {
     /* background-color: greenyellow; */
     width: auto;
     height: auto;
@@ -6,32 +6,41 @@
     margin: auto;
 }
 
-/*        .block {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin: 5px;
-    visibility: hidden;
-} */
-.nonblock {
-    width: 50px;
-    height: 50px;
+.emptyblock, .nonblock {
+    width: 100px;
+    height: 100px;
     display: inline-block;
     margin: 5px;
     text-align: center;
     border: 2px solid #000;
-    background-color: #fff;
 }
 
-.block, .blockred, .blockblue, .blockyellow, .blockgreen, .blockpurple {
-    width: 50px;
-    height: 50px;
+.block {
+    /* display: none; */
+    width: 100px;
+    height: 100px;
     display: inline-block;
-    margin: 5px;
+    margin: 7px;
     text-align: center;
+    /* visibility: visible; */
 }
 
-.blockRow {
+.submit, .restart, .start {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    visibility: visible;
+}
+
+.rowBlock {
     display: block;
+    /* visibility: hidden; */
     /* background-color: brown; */
+}
+
+.text {
+    margin: 10px;
 }

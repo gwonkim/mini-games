@@ -1,107 +1,160 @@
-const submit = document.querySelector(".submit");
-const block = document.querySelector(".block");
-  const nonblock = document.querySelector(".nonblock");
-
+// const block = document.querySelector(".block");
+// const nonblock = document.querySelector(".nonblock");
 
 const color = ["red", "blue", "yellow", "green", "purple"]; // 블록 색상
-let blockAnswer = [];
-let answerColor;
+const size = 3; // 크기
+let blockColor = []; // 블록 색상
+let checkedBlock = []; // 선택한 블록
+let answerColor; // 정답 색상
 
-window.onload = function () {
-  let board = document.querySelector(".board");
+const start = () => {
+  createBlock(); // 블럭 생성
+  showBlock();
+  setTimeout(question, 1000);
+};
 
-  for (let i = 0; i < 3; i++) {
-    let answer = [];
-    let blockRow = document.createElement("div"); // 블록 한 줄
-    blockRow.className = "blockRow";
-    for (let j = 0; j < 3; j++) {
-      let block = document.createElement("div"); // 블록
+const createBlock = () => {
+  console.log('creatBlock... -----------------------------------')
+  const game = document.querySelector(".game");
+  const blockBoard = document.createElement("div"); 
+  blockBoard.className = 'blockBoard'
+
+  hiddenButton('start'); // 시작버튼 숨기기
+  for (let r = 0; r < size; r++) {
+    blockColor[r] = [];
+    checkedBlock[r] = [];
+
+    let rowBlock = document.createElement("div"); // RowBlock
+    rowBlock.className = "rowBlock";
+    
+    for (let c = 0; c < size; c++) {
+      let newBlock = document.createElement('div');
       let num = parseInt(Math.random() * 5); // 색상 랜덤 지정
-      block.id = `block${i}${j}`;
-      block.className = `block`;
-      answer[j] = color[num];
-      block.innerText = color[num];
-      block.style.backgroundColor = color[num]; 
-      block.addEventListener("click", onClickBlock);
-      // block.classList.add(`backgroundColor = ${color[num]}`);
+      newBlock.className = `block`;
+      newBlock.id = `block${r}${c}`;
+      newBlock.addEventListener('click', onClickBlock);
+      newBlock.style.background = color[num]; 
 
-      // block.classList.remove('block');
-      // block.classList.add('nonblock');
-      blockRow.appendChild(block);
+      blockColor[r][c]= color[num]; // 색상 저장
+      newBlock.innerText = color[num]; // 확인용
+
+      rowBlock.appendChild(newBlock);
     }
-    console.log("answer", answer);
-    blockAnswer.push(answer);
-    board.appendChild(blockRow);
+    blockBoard.appendChild(rowBlock);
   }
-
-  // console.log('blockAnswer', blockAnswer);
-  setTimeout(time(), 2000);
-  answerColor = color[parseInt(Math.random() * 5)];
-  let text = document.createElement("p");
-  text.innerText = `${answerColor}를 선택해주세요.`;
-  board.appendChild(text);
-
+  game.appendChild(blockBoard);
   
+  let submitbutton = document.createElement('button');
+  let restartbutton = document.createElement('button');
+  
+  submitbutton.className = `submit`;
+  submitbutton.innerText = '제출'
+  submitbutton.addEventListener('click', submit);
+  restartbutton.className = `restart`;
+  restartbutton.innerText = '다시시작'
+  restartbutton.addEventListener('click', onRestart);
+  game.appendChild(submitbutton);
+  game.appendChild(restartbutton);
 };
 
-// window.addEventListener("onclick", e => {});
-
-let time = () => {
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      let block = document.querySelector(`#block${i}${j}`);
-      // block.style.backgroundColor = color[0];
-      block.classList.remove('nonblock');
-      block.classList.add('block');
-      setInterval(() => {
-        block.style.backgroundColor = '#fff'; 
-        block.classList.add('nonblock');
-        block.classList.remove('block');
-        // notification.classList.remove('show')
-      }, 500);
-      // }, 3000);
-    }
-  }
-  console.log('nonblock ??', nonblock, block)
-};
-
-const onClickBlock = (e) => {
-  console.log('e', e);
-  console.log('e', e.target.classList);
-  let clickItem = e.target.classList[1];
-  if (clickItem === "block") {
-    clickItem.toggle('nonblock');
-    // nonblock.classList.toggle('block');
-  } else if ((clickItem === "nonblock")) {
-    clickItem.toggle('block');
-  }
-  console.log('click');
-  // e.target.className = 'block';
+// 문제
+const question = () => {
+  const text = document.querySelector('.text');
+  answerColor = color[parseInt(Math.random() * 5)]; // 정답 색깔
+  text.innerText = `${answerColor}를 선택해주세요.`;
 }
 
-const init = () => {
-/*   function init() {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        const block = document.querySelector(`#block${i}${j}`);
-        block.addEventListener("click", onClickBlock);
-    }
-  } */
-  
- /*  console.log('nonblock ??', nonblock, block)
-  block.addEventListener("click", onClickBlock);
-  nonblock.addEventListener("click", () => onClickBlock); */
-  submit.addEventListener("click", e => {
-    submit;
-    console.log("e", e);
-    console.log("e", e.target);
-    let answer = blockAnswer.filter(v => (v === answerColor ? true : false));
-    console.log('정답!', answer);
-  
-    console.log("blockAnswer", blockAnswer);
-    console.log("answerColor", answerColor);
-    // answerColor;
-  });
+/* 
+  const question = () => {
+  const game = document.querySelector(".game");
+  const text = document.createElement('p');
+  text.className = 'text';
+  answerColor = color[parseInt(Math.random() * 5)]; // 정답 색깔
+  text.innerText = `${answerColor}를 선택해주세요.`;
+  game.appendChild(text);
+} */
+
+// 블럭 잠깐 보이기
+let showBlock = () => {
+  for(let i=0; i<size; i++) {
+    for(let j=0; j<size; j++) {
+      let block = document.querySelector(`#block${i}${j}`);
+        setTimeout(() => {
+          for(let j=0; j<size; j++) {
+            block.classList.remove('block');
+            block.classList.add('nonblock');
+            block.style.background = '#fff'
+            }
+          }, 500);
+      }
+    clearTimeout();
+  }
 };
 
-init();
+// 블럭 클릭
+const onClickBlock = (e) => {
+  let classN = e.target.classList[0];
+  let id = e.target.id;
+  let block = document.querySelector(`#${id}`);
+  if (classN === 'nonblock') {
+    block.classList.remove('nonblock');
+    block.classList.add('block');
+    block.style.background = `${blockColor[id[id.length-2]][id[id.length-1]]}`;
+  } else if (classN === 'block') {
+    block.classList.remove('block');
+    block.classList.add('nonblock');
+    block.style.background = '#fff';
+  }
+
+  // 정답 확인
+  checkAnswer(id);
+}
+
+const checkAnswer = (id) => {
+  if (blockColor[id[id.length-2]][id[id.length-1]] !== answerColor) {
+    console.log('틀렸습니다.');
+    alert('틀렸습니다!');
+    onRestart();
+  } else {
+    console.log('answerColor : ', blockColor[id[id.length-2]][id[id.length-1]], '을 잘 선택하였습니다.')
+  }
+}
+
+// 재시작
+const onRestart = () => {
+  document.querySelector('.blockBoard').remove();
+  showButton('start');
+  removeButton('text');
+  removeButton('submit');
+  removeButton('restart');
+}
+
+// 제출하기
+const submit = (e) => {
+  console.log('submit', submit);
+  console.log("e", e);
+  console.log("e", e.target);
+  let answer = blockColor.filter(v => (v === answerColor ? true : false));
+  console.log('정답!', answer);
+
+  console.log("blockColor", blockColor);
+  console.log("answerColor", answerColor);
+  // answerColor;
+};
+
+// 버튼 숨기기
+const hiddenButton = (value) => {
+  let tag = document.querySelector(`.${value}`);
+  tag.style.visibility = 'hidden';
+};
+// 버튼 숨기기
+const removeButton = (value) => {
+  document.querySelector(`.${value}`).remove();
+};
+
+// 버튼 보이기
+const showButton = (value) => {
+  let tag = document.querySelector(`.${value}`);
+  tag.style.visibility = 'visible';
+  // tag.style.display = 'block';
+};
