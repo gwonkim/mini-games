@@ -1,37 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Games</title>
-    <style>
-        .board {
-            background-color: greenyellow;
-            width: auto;
-            height: 500px;
-        }
-
-        .block {
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-            margin: 5px;
-        }
-
-        .blockRow {
-            display: block;
-            background-color: brown;
-        }
-    </style>
+    <link href="colorBlock.css" rel="stylesheet">
     <script src="./colorBlock.js"></script>
 </head>
 <body>
     <!-- <script src="./colorBlock.js"></script> -->
     <h1 class="h">Mini Games</h1>
-    <div class="board">
-
+    <div class="game">
+        <div class="board"></div>
+        <button class="submit">제출하기</button>
     </div>
-    <p id = "test">hello</p>
 </body>
 </html>
