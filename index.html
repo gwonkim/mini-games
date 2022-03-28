@@ -7,13 +7,21 @@
     <title>Mini Games</title>
     <link href="colorBlock.css" rel="stylesheet">
     <script src="./colorBlock.js"></script>
+    <script src="./explain.js"></script>
 </head>
 <body>
-    <!-- <script src="./colorBlock.js"></script> -->
-    <h1 class="h">Mini Games</h1>
-    <div class="game">
-        <h2 class="text"></h2>
-        <button type="button" class="start" onclick="start()">시작하기</button>
+    <div class="index">
+        <h1 class="h">Mini Games</h1>
+        <div class="game">
+            <h2 class="text"></h2>
+        </div>
+            <button type="button" class="start3 start" onclick="start(3, 1000)">3x3</button>
+            <button type="button" class="start5 start" onclick="start(5, 2000)">5X5</button>
+            <button type="button" class="start10 start" onclick="start(7, 4000)">7X7</button>
+            <div type="button" class="explain">
+                <p onclick="explain()">&lt;게임 방법&gt;</p>
+            </div>
+
     </div>
 </body>
 </html>

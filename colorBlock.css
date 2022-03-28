@@ -1,14 +1,26 @@
-.blockBoard, .emptyBoard {
-    /* background-color: greenyellow; */
+body {
+    text-align: center; 
+}
+
+.index {
+    background-color: blueviolet;
+    margin: 30px auto 150px auto; 
+    width: 100vw;
+    height: 100%;
+    max-width: 1000px;
+    min-width: 450px;
+    display: inline-block;
+}
+
+.blockBoard {
     width: auto;
     height: auto;
-    justify-content: center;
     margin: auto;
 }
 
-.emptyblock, .nonblock {
-    width: 100px;
-    height: 100px;
+.nonblock {
+    width: 50px;
+    height: 50px;
     display: inline-block;
     margin: 5px;
     text-align: center;
@@ -16,31 +28,48 @@
 }
 
 .block {
-    /* display: none; */
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     display: inline-block;
     margin: 7px;
     text-align: center;
-    /* visibility: visible; */
 }
 
 .submit, .restart, .start {
     display: inline-block;
-    margin-right: 10px;
+    margin: 20px 10px 50px 0px;
     margin-top: 20px;
     width: 100px;
     height: 50px;
+    font-size: 16px;
+    visibility: visible;
+    cursor: pointer;
+}
+
+.explain {
+    margin-top: 20px;
     font-size: 16px;
     visibility: visible;
 }
 
 .rowBlock {
     display: block;
-    /* visibility: hidden; */
-    /* background-color: brown; */
 }
 
 .text {
-    margin: 10px;
+    height: 30px;
+}
+
+.explain > table {
+    visibility: visible;
+    border-collapse: collapse;
+    border: 2px solid #000;
+}
+
+.explainBox {
+    width: 400px;
+}
+
+p {
+    cursor: pointer;
 }
