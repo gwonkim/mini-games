@@ -1,4 +1,4 @@
-# colorBlock game
+# color block game
 
 ## 목차
 - [colorBlock 게임 설명](#colorBlock-게임은-무엇인가?)
