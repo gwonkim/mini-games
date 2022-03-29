@@ -3,7 +3,6 @@ body {
 }
 
 .index {
-    background-color: blueviolet;
     margin: 30px auto 150px auto; 
     width: 100vw;
     height: 100%;
@@ -12,19 +11,13 @@ body {
     display: inline-block;
 }
 
-.blockBoard {
-    width: auto;
-    height: auto;
-    margin: auto;
-}
-
 .nonblock {
     width: 50px;
     height: 50px;
     display: inline-block;
-    margin: 5px;
-    text-align: center;
-    border: 2px solid #000;
+    margin: 7px;
+    cursor: pointer;
+    box-shadow: 2px 3px 6px rgba(46, 46, 46, 0.16), 2px 3px 6px rgba(56, 56, 56, 0.23);
 }
 
 .block {
@@ -32,18 +25,21 @@ body {
     height: 50px;
     display: inline-block;
     margin: 7px;
-    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 3px 6px rgba(46, 46, 46, 0.16), 2px 3px 6px rgba(56, 56, 56, 0.23);
 }
 
 .submit, .restart, .start {
     display: inline-block;
-    margin: 20px 10px 50px 0px;
-    margin-top: 20px;
+    margin: 10px;
     width: 100px;
     height: 50px;
     font-size: 16px;
     visibility: visible;
     cursor: pointer;
+    border: 0.5px solid rgba(0,0,0,0.15);
+    background-color: aliceblue;
+    box-shadow: 4px 5px 5px rgba(0,0,0,0.22), -4px 5px 5px rgba(0,0,0,0.22);
 }
 
 .explain {
@@ -67,7 +63,12 @@ body {
 }
 
 .explainBox {
-    width: 400px;
+    min-width: 400px;
+    display: none;
+}
+.nonExplainBox {
+    min-width: 400px;
+    display: block;
 }
 
 p {

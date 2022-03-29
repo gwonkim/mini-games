@@ -6,19 +6,18 @@ let answerColor; // 정답 색상
 
 const start = (num, time) => {
   size = num;
-  createBlock(); // 블록 생성
-  showBlock(time); // 블록 보이기
-  setTimeout(question, 500+time); // 문제 생성
+  createBlockBoard(); 
+  createButton();
+  showBlock(time);
+  setTimeout(question, 500+time);
 };
 
-const createBlock = () => {
+// 블록 생성
+const createBlockBoard = () => {
   const game = document.querySelector(".game");
   const blockBoard = document.createElement("div");
   blockBoard.className = 'blockBoard';
 
-  hiddenButton('start3'); // 시작버튼 숨기기
-  hiddenButton('start5'); // 시작버튼 숨기기
-  hiddenButton('start10'); // 시작버튼 숨기기
   for (let r = 0; r < size; r++) {
     blockColor[r] = [];
     checkedBlock[r] = [];
@@ -40,7 +39,17 @@ const createBlock = () => {
     blockBoard.appendChild(rowBlock);
   }
   game.appendChild(blockBoard);
+};
 
+ // 버튼 생성
+const createButton = () => {
+  // 시작버튼 숨기기
+  hiddenButton('start3'); 
+  hiddenButton('start5');
+  hiddenButton('start10');
+
+  // 제출 및 다시시작 버튼 생성
+  const game = document.querySelector(".game");
   let submitbutton = document.createElement('button');
   let restartbutton = document.createElement('button');
   
@@ -52,7 +61,7 @@ const createBlock = () => {
   restartbutton.addEventListener('click', onRestart);
   game.appendChild(submitbutton);
   game.appendChild(restartbutton);
-};
+}
 
 // 블록 보이기
 let showBlock = (time) => {
@@ -107,11 +116,6 @@ const checkAnswer = (id) => {
   }
 };
 
-// 재시작
-const onRestart = () => {
-  location.reload();
-}
-
 // 제출하기
 const submit = () => {
   for (let r = 0; r < size; r++) {
@@ -126,14 +130,16 @@ const submit = () => {
   return onRestart();
 };
 
+
+// 재시작
+const onRestart = () => {
+  location.reload();
+}
+
 // 버튼 숨기기
 const hiddenButton = (value) => {
   let tag = document.querySelector(`.${value}`);
   tag.style.visibility = 'hidden';
-};
-// 버튼 숨기기
-const removeButton = (value) => {
-  document.querySelector(`.${value}`).remove();
 };
 
 // 버튼 보이기

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Games</title>
+    <link href="colorBlock.css" rel="stylesheet">
+    <script src="./colorBlock.js"></script>
+    <script src="./explain.js"></script>
+</head>
+
+<body>
+    <div class="index">
+        <h1>Mini Games</h1>
+        <h2>&lt;color block&gt;</h2>
+        <div class="game">
+            <h2 class="text"></h2>
+        </div>
+        <button type="button" class="start3 start" onclick="start(3, 1000)">3x3</button>
+        <button type="button" class="start5 start" onclick="start(5, 2000)">5X5</button>
+        <button type="button" class="start10 start" onclick="start(7, 3000)">7X7</button>
+        <div>
+            <p onclick="explain()">게임 방법</p>
+            <div id="explain" class="explainBox">
+                <h3>colorBlock 게임이란?</h3>
+                <p>잠깐 보여진 블록판을 기억해서 랜덤으로 뽑힌 색상의 칸을 전부 누르면 성공!</p>
+                <h3>- 순서 -</h3>
+                <p>1. 시작하기 버튼을 누르면 격자모양의 블록판 하나가 잠깐 보였다가 사라진다.</p>
+                <p>2. 사라진 순간 블록판 아래에 'oo색을 선택해주세요.'라는 문구가 나온다.(색상은 랜덤.)</p>
+                <p>3. 해당 색상을 올바르게 선택했다면 성공</p>
+                <h3>- 시간 -</h3>
+                <p>3X3 -> 약 1초</p>
+                <p>5X5 -> 약 2초</p>
+                <p>7X7 -> 약 3초</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
